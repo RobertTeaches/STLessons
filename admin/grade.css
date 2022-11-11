@@ -1,0 +1,34 @@
+.submission{
+    max-width: 100%;
+    text-align: left;
+    background-color: rgb(245, 244, 244);
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    margin-bottom: 1em;
+    
+    border-radius: 1em;
+    border: 2px solid black;
+    box-shadow: 2px 2px 1px rgb(63, 63, 63);
+    min-width: 33%;
+    font-family: 'Poppins';
+}
+dialog
+{
+    max-width: 80%;
+    width: 50%;
+    min-width: 33%;
+    resize: horizontal;
+
+    border-radius: .75em;
+    box-shadow: 3px 2px 1px darkgray;
+}
+
+.title{
+    font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+}
+
+dialog button{
+    border: 2px solid darkgray;
+}

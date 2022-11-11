@@ -1,0 +1,33 @@
+:root{
+    font-family: 'Poppins';
+}
+.container{
+    max-width: 80%;
+}
+.container input[type=text] {
+    margin-top: 1.5%;
+    margin-bottom: 2.5%;
+    font-size: 2em;
+}
+
+
+
+.horizontal{
+    justify-content: center;
+}
+
+.top {
+    justify-content: center;
+    display: flex;
+    margin-bottom: 2.5%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top h2{
+    margin-bottom: 0%;
+}
+
+.category{
+    width: 60%;
+}

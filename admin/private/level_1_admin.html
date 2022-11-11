@@ -1,0 +1,39 @@
+<div class="card" id="create_license">
+    <h2 style="margin: 0%; cursor: pointer;" onclick="toggleDropdown('org_add_form')">Create Organization</h2>
+    <hr>
+    <form action="javascript:;" onsubmit="addLicense(this)" id="org_add_form">
+        <input type="text" placeholder="Organization Name" name="org_name">
+        <div class="number-and-label">
+            <label>Number of Licenses</label>
+            <input style="width: 10% !important; text-align: center;" type="number" placeholder="10"
+                name="license_number">
+        </div>
+        <input type="text" placeholder="Secret Phrase" name="org_phrase">
+        <input type="text" placeholder="Email" name="org_email"><br><br>
+        <button>Confirm</button>
+    </form>
+</div>
+<div class="card" id="get_orgs">
+    <div>
+        <h1>Get Organizations</h1>
+        <button onclick="orgData()">Go</button>
+    </div>
+    <h1 onclick="toggleDropdown('org_data_container')">Organization Data</h1>
+    <hr>
+    <div class="container" id="org_data_container" hidden>
+        Empty
+    </div>
+</div>
+<div class="horizontal" style="justify-content: center;">
+    <div><button onclick="gradeBounties()">Grade Bounties</button>
+        <p style="font-size: smaller;">This will be incorporated better soon!</p>
+    </div>
+    <div><button style="background-color: var(--red-button-color);" onclick="editBounties()">Edit Bounties</button>
+        <p style="font-size: smaller;">This will be incorporated better soon!</p>
+    </div>
+</div>
+<div class="card">
+    <h1>Data Functions</h1>
+    <button onclick="syncLessonData()">Sync Lesson Data</button>
+    <button onclick="syncAllStudentData()">Sync All Student Data</button>
+</div>

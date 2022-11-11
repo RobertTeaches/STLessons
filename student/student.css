@@ -1,0 +1,337 @@
+body {
+    padding: 0;
+    margin-top: 0;
+}
+
+nav>h3 {
+    margin-top: .5em;
+    margin-bottom: 0;
+}
+
+:root {
+    font-family: 'Poppins';
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+    padding-left: 11vw;
+}
+
+nav button {
+    padding: 10px 10px;
+    margin-left: 1.5em;
+    background-color: var(--red-button-color);
+}
+
+dialog h4 {
+    text-align: center;
+}
+
+dialog#view_submission {
+    height: fit-content;
+    resize: horizontal;
+}
+
+.bounties button {
+    background-color: var(--yellow-button-color);
+    margin: auto;
+}
+
+.bounties p {
+    text-align: left;
+    color: black;
+}
+
+.bounties>.horizontal {
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+}
+
+.icon {
+    border-radius: 1em;
+    /* margin-left: 7.5%; */
+    width: 75px;
+    height: 75px;
+}
+
+.title {
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin-top: .5em;
+    margin-bottom: .5em;
+    text-align: center;
+}
+
+.reward {
+    /* margin-left: auto; */
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 75px;
+    font-size: 2.1em;
+}
+
+.bounties.card {
+    margin: 0%;
+    width: 95%;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    text-align: center;
+}
+
+.card-list>.card {
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    max-width: 80%;
+}
+
+.card-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    margin: auto auto auto 10%;
+}
+
+.card-list-grid {
+    display: flex;
+    margin: auto auto auto 10%;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card-list-grid .card {
+    width: 25%;
+    height: 25vh;
+    margin-bottom: 5%;
+}
+
+.minecraft button {
+    background-color: var(--green-button-color);
+}
+
+.horizontal {
+    justify-content: center;
+    align-items: baseline;
+    position: relative;
+}
+
+.horizontal-space {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    position: relative;
+}
+
+.horizontal-space>.card {
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-bottom: 0;
+    max-width: 35%;
+}
+
+.description {
+    background-color: rgb(245, 244, 244);
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    margin-bottom: 1em;
+
+    border-radius: 1em;
+    border: 2px solid black;
+    box-shadow: 2px 2px 1px rgb(63, 63, 63);
+    min-width: 33%;
+    font-family: 'Poppins';
+}
+
+dialog {
+    border-radius: 10px;
+    max-width: 85%;
+    width: 65%;
+    max-height: 95%;
+    height: 85%;
+    resize: both;
+}
+
+dialog>textarea {
+    width: 90%;
+    margin: auto;
+    resize: none;
+    background-color: rgb(245, 244, 244);
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    margin-bottom: 1em;
+
+    border-radius: 1em;
+    border: 2px solid black;
+    box-shadow: 2px 2px 1px rgb(63, 63, 63);
+    min-width: 33%;
+    font-family: 'Poppins';
+}
+
+dialog>p {
+    max-width: 90%;
+    text-align: left;
+    margin: auto;
+}
+
+dialog::backdrop {
+    background-color: rgba(204, 203, 123, 0.5);
+}
+
+.sidebar {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 1vh;
+    max-width: 10%;
+    min-height: 100vh;
+    background-color: rgb(240, 243, 227);
+    box-shadow: 2px 2px 1px gray;
+    padding: 1%;
+    z-index: 0;
+}
+.sidebar h1 {
+    font-size: 80%;
+}
+
+.sidebar h3 {
+    font-size: 1vw;
+}
+
+.status {
+    font-size: .6vw;
+    position: absolute;
+    right: 3%;
+    bottom: -8%;
+    font-weight: bold;
+    text-transform: capitalize;
+
+}
+
+.needs-work {
+    background-color: rgb(231, 190, 144) !important;
+}
+
+.complete {
+    background-color: rgb(81, 134, 81) !important;
+}
+
+.pending {
+    background-color: rgb(191, 191, 227) !important;
+}
+
+.needs-work .status {
+    color: rgb(69, 2, 2);
+}
+
+.list .card {
+    background-color: white;
+    border-radius: 5px;
+    width: 70%;
+    padding: 10%;
+    position: relative;
+    margin-bottom: 3%;
+}
+
+.list button {
+    font-size: 1em;
+    padding: 7%;
+    margin-bottom: 5%;
+
+}
+
+#feedback_container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: auto;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(152, 228, 214);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #d1b56f;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.horizontal select {
+    position:absolute;
+    right: 15%;
+    /* top: 1vh; */
+}
+select{
+    border-radius: 5px;
+    border: solid black 2px;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 1.25em;
+}

@@ -1,0 +1,26 @@
+<!-- <div class="card" id="create_student">
+    <h2 style="margin: 0%; cursor: pointer;" onclick="toggleDropdown('org_create_student')">Create Student</h2>
+    <hr>
+    <form action="javascript:;" onsubmit="createStudent(this)" id="org_add_form">
+        <input type="text" placeholder="Organization Name" name="org_name">
+        <div class="number-and-label">
+            <label>Number of Licenses</label>
+            <input style="width: 10% !important; text-align: center;" type="number" placeholder="10"
+                name="license_number">
+        </div>
+        <input type="text" placeholder="Secret Phrase" name="org_phrase">
+        <input type="text" placeholder="Email" name="org_email"><br><br>
+        <button>Confirm</button>
+    </form>
+</div> -->
+<div><button onclick="gradeBounties()">Grade Bounties</button><p style="font-size: smaller;">This will be incorporated better soon!</p></div>
+<div class="card" id="get_students">
+    <div>
+        <h1 onclick="toggleDropdown('student_data_container')">Get All Students</h1>
+        <button onclick="getStudents()">Go</button>
+        <hr>
+    </div>
+    <div class="container" id="student_data_container" hidden>
+        Empty
+    </div>
+</div>

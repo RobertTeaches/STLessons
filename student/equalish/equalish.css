@@ -1,0 +1,207 @@
+:root{
+    height: 80vh;
+}
+body{
+    height: 100%;
+}
+main{
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 3vh;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.equations{
+    justify-content: space-evenly;
+}
+
+.bank{
+    justify-content: center;
+    margin-top: 25vh;
+    /* position: absolute;
+    bottom: 5%;
+    left: 5%;
+    right: 5%; */
+}
+
+.equal-sign{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
+.block{
+    margin-left: .25vw;
+    margin-right: .25vw;
+    width: 8vw;
+    height: 8vw;
+    min-width: 35px;
+    min-height: 35px;
+    border: solid black 2px;
+    border-radius: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    user-select: none;
+}
+
+.block.selected{
+    transform: translateY(-5vh);
+    border: solid orange 2px;
+}
+
+.equations .block.selected{
+    transform: translateY(5vh);
+}
+
+.green{
+    background-color: green;
+    color: white;
+    border-color: rgb(24, 24, 24) rgb(24, 24, 24) rgb(58, 42, 42) rgb(58, 42, 42);
+}
+
+.floating_card
+{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    opacity: 0%;
+    transform: translate(-50%, -50%);
+    padding: .5vw 3vw;
+    border: solid black 2px;
+    border-radius: 1vw;
+    text-align: center;
+    z-index: 1;
+    /* FLoating Animation */
+    animation: float_up 8s;
+    -moz-animation: float_up 8s;
+    -webkit-animation: float_up 8s;
+}
+
+@keyframes float_up {
+    from{
+        top: 50%;
+        opacity: 100%;
+    }
+    to{
+        top: 35%;
+        opacity: -50%
+    }
+}
+
+.float_title{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2em;
+    color: whitesmoke;
+}
+.float_description{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25em;
+    color: white
+}
+
+#win_float{
+    background-color: green;
+}
+
+.mid{
+    position: absolute;
+    top:  30%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.row.mid{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 10vh;
+    padding: 15px 0px;
+    width: 100vmax;
+    justify-content: center;
+}
+
+#wrong{
+    animation: fade_out 1.5s linear;
+    /* background: linear-gradient(
+        rgba(248, 196, 52, 0.2),
+        rgba(219, 123, 123, 0.2)
+    ); */
+}
+
+@keyframes fade_out {
+    0%{
+        opacity: 100%;
+    }
+    100%{
+        opacity: 0%;
+    }
+}
+
+.wrong-x-box{
+    height: 100%;
+    aspect-ratio: 1/1;
+    border: solid red 3px;
+    color: red;
+    font-size: 9em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-family: monospace;
+    margin: 0 5%;
+    user-select: none;
+}
+
+button.green{
+    font-size: 2em;
+    width: 5vw;
+    height: 3vw;
+}
+
+button.green:disabled
+{
+    background-color: rgba(159, 167, 159, 0.359);
+    color:rgb(198, 198, 198)
+}
+
+button{
+    border-radius: 5px;
+}
+
+#orig-block{
+    display: none;
+}
+/* Test */
+dialog{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    max-width: 50%;
+}
+.hide{
+    display: none!important;
+}
+
+
+@media screen and (max-width: 600px)
+{
+    .block{
+        min-width: 25px;
+        min-height: 25px;
+        font-size: 1.2rem;
+    }
+}

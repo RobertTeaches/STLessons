@@ -1,0 +1,79 @@
+.bounties > button{
+    background-color: var(--yellow-button-color);
+}
+
+.science{
+    color: blue;
+}
+.minecraft{
+    color: green;
+}
+.math{
+    color: orange;
+}
+.code{
+    color: purple;
+}
+.gaming{
+    color: rgb(0, 149, 159);
+}
+.art{
+    color: rgb(145, 121, 13);
+}
+.roblox{
+    color: red;
+}
+.writing{
+    color: coral;
+}
+.community{
+    color: rgb(255, 0, 247);
+}
+.computercraft{
+    color: gray;
+}
+
+.wellness{
+    color: rgb(201, 139, 149);
+}
+
+
+.science img{
+    content:url("./icons/science_icon.png");
+}
+.minecraft img{
+    content:url("./icons/minecraft_icon.png");
+}
+.math .icon{
+    content:url("./icons/math_icon.png");
+}
+.code img{
+    content:url("./icons/code_icon.png");
+}
+.gaming img{
+    content:url("./icons/gaming-icon.png");
+}
+.roblox img{
+    content:url("./icons/roblox_icon.png");
+}
+.writing img{
+    content:url("./icons/writing_icon.webp");
+}
+.community img{
+    content:url("./icons/community_icon.png");
+}
+.computercraft img{
+    content:url("./icons/computercraft_icon.png");
+}
+.art img{
+    content:url("./icons/art_icon.png");
+}
+.wellness img{
+    content:url("./icons/wellness-icon.png")
+}
+
+
+.bounties >.horizontal>  .reward{
+    color: var(--green-button-color)
+}
+
