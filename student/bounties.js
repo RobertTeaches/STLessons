@@ -5,7 +5,8 @@ let categories = []
 let user = "guest";
 
 let categoryFilter = "None"
-window.onload = async (e) => {
+window.onload = async (e) =>
+{
     //Get user from cookies if it exists
     user = document.cookie
         .split('; ')
@@ -22,25 +23,32 @@ window.onload = async (e) => {
     let orig = document.getElementById("bounty_orig");
     let parent = document.getElementById("bounties")
     var count = 0
-    if (allBounties === "empty") {
+    if (allBounties === "empty")
+    {
         orig.querySelector(".title").innerText = "Failed to Get Bounties"
         return
     }
-    allBounties.forEach((bounty) => {
+    allBounties.forEach((bounty) =>
+    {
         let completed = false
-        if (submissions != null) {
-            for ([id, submission] of Object.entries(submissions)) {
-                if (submission["status"] == "complete" && bounty["longId"] === submission["bountyId"]) {
+        if (submissions != null)
+        {
+            for ([id, submission] of Object.entries(submissions))
+            {
+                if (submission["status"] == "complete" && bounty["longId"] === submission["bountyId"])
+                {
                     completed = true
                 }
             }
         }
-        if (bounty["category"]) {
+        if (bounty["category"])
+        {
             if (!categories.includes(bounty["category"])) categories.push(bounty["category"])
         }
         let bId = "bounty_" + count++;
         bounties[bId] = bounty;
-        if (!completed) {
+        if (!completed)
+        {
             //Create copy and give it new id
             let copy = orig.cloneNode(true);
             parent.appendChild(copy)
@@ -63,7 +71,8 @@ window.onload = async (e) => {
             console.log(bounty)
             if (bounty["category"])
                 copy.classList.add(bounty["category"])
-            copy.onclick = (e) => {
+            copy.onclick = (e) =>
+            {
                 if (e.target instanceof HTMLParagraphElement || e.target instanceof HTMLLIElement || e.target instanceof HTMLOListElement)
                     return;
                 toggleBounty(copy.id)
@@ -77,8 +86,10 @@ window.onload = async (e) => {
     //#region Setting up Submission Side-bar
     let submissionList = document.getElementById("bounty-submissions")
     orig = submissionList.querySelector(".card");
-    if (submissions) {
-        Object.entries(submissions).forEach(async ([id, submission]) => {
+    if (submissions)
+    {
+        Object.entries(submissions).forEach(async ([id, submission]) =>
+        {
             let sCopy = orig.cloneNode(true)
             let bounty = await getBountyByLongId(submission["bountyId"])
             sCopy.querySelector(".title").innerText = bounty["title"]
@@ -88,13 +99,15 @@ window.onload = async (e) => {
             sCopy.classList.add(status)
             sCopy.classList.add(bounty["category"])
             submissionList.appendChild(sCopy)
-            sCopy.onclick = (e) => {
+            sCopy.onclick = (e) =>
+            {
                 console.log(e)
                 viewSubmission(id)
             }
         })
     }
-    else{
+    else
+    {
         orig.remove()
     }
     orig.remove()
@@ -103,32 +116,38 @@ window.onload = async (e) => {
 
     //#region Searchbar stuff
     let searchbar = document.getElementById("searchbar")
-    if (searchbar.value && searchbar.value.length > 0) {
+    if (searchbar.value && searchbar.value.length > 0)
+    {
         filterBounties(searchbar.value)
     }
 
-    searchbar.oninput = (e) => {
+    searchbar.oninput = (e) =>
+    {
         filterBounties(e.target.value)
     }
     //#endregion
 
     //#region Category DropDown 
     let select = document.getElementById("category_filter")
-    categories.forEach(category => {
+    categories.forEach(category =>
+    {
         let option = document.createElement("option")
         option.text = category
         option.id = category
         select.appendChild(option)
     })
-    select.onchange = e => {
+    select.onchange = e =>
+    {
         categoryFilter = e.target.value
         let checkCategory = document.getElementById("use_category")
-        if (categoryFilter !== "None") {
+        if (categoryFilter !== "None")
+        {
             checkCategory.checked = false
             checkCategory.disabled = true
             // checkCategory.hidden = true
         }
-        else {
+        else
+        {
             checkCategory.checked = true
             checkCategory.disabled = false
             // checkCategory.hidden = false    
@@ -139,16 +158,21 @@ window.onload = async (e) => {
     //#endregion
     //#region Handling "click background to close" functionality
     let dialog = document.getElementById("submit_bounty")
-    dialog.addEventListener('mousedown', (e) => {
+    dialog.addEventListener('mousedown', (e) =>
+    {
         let x = e.clientX, y = e.clientY
         let box = dialog.getBoundingClientRect()
-        if (box.top < y && box.bottom > y && box.left < x && box.right > x) {
+        if (box.top < y && box.bottom > y && box.left < x && box.right > x)
+        {
             return;
         }
-        else {
+        else
+        {
             let submission = document.getElementById("submission").value
-            if (submission && submission.length > 5) {
-                if (currentBounty.length > 0) {
+            if (submission && submission.length > 5)
+            {
+                if (currentBounty.length > 0)
+                {
                     saveSubProgress(currentBounty, submission)
                 }
             }
@@ -157,13 +181,16 @@ window.onload = async (e) => {
     });
 
     let sdialog = document.getElementById("view_submission")
-    sdialog.addEventListener('mousedown', (e) => {
+    sdialog.addEventListener('mousedown', (e) =>
+    {
         let x = e.clientX, y = e.clientY
         let box = sdialog.getBoundingClientRect()
-        if (box.top < y && box.bottom > y && box.left < x && box.right > x) {
+        if (box.top < y && box.bottom > y && box.left < x && box.right > x)
+        {
             return;
         }
-        else {
+        else
+        {
             sdialog.close();
         }
     });
@@ -171,7 +198,8 @@ window.onload = async (e) => {
 
     //Loading inprogress submissions
     let storedSubmissions = localStorage.getItem("submissions")
-    if (storedSubmissions) {
+    if (storedSubmissions)
+    {
         inProgress = JSON.parse(storedSubmissions)
     }
     listView = localStorage.getItem('listView') ?? true
@@ -182,38 +210,56 @@ window.onload = async (e) => {
 
 }
 
-window.onclose = async (e) => {
+window.onclose = async (e) =>
+{
     localStorage.setItem("submissions", JSON.stringify(inProgress))
 }
 
-async function getBountyByLongId(longId) {
-    for (const [shortid, bounty] of Object.entries(bounties)) {
-        if (bounty["longId"] === longId) {
+async function getBountyByLongId(longId)
+{
+    for (const [shortid, bounty] of Object.entries(bounties))
+    {
+        if (bounty["longId"] === longId)
+        {
             return bounty
-        }
-        else {
-            //console.log(shortid + " doesn't match " + longId)
         }
     }
 }
 
-function saveSubProgress(bountyId, submission) {
+async function getBountyShortIdByLong(longId)
+{
+    for (const [shortid, bounty] of Object.entries(bounties))
+    {
+        if (bounty["longId"] === longId)
+        {
+            return shortid
+        }
+    }
+}
+
+function saveSubProgress(bountyId, submission)
+{
     if (!inProgress[user]) inProgress[user] = {};
     inProgress[user][bountyId] = submission;
     localStorage.setItem("submissions", JSON.stringify(inProgress))
 }
-function getSubProgress(bountyId) {
+function getSubProgress(bountyId)
+{
     let progress = "";
-    if (inProgress[user] && inProgress[user][bountyId]) {
+    if (inProgress[user] && inProgress[user][bountyId])
+    {
         progress = inProgress[user][bountyId]
     }
     return progress;
 }
-function filterBounties(filter) {
+function filterBounties(filter)
+{
     filter = filter ?? document.getElementById("searchbar").value
     let parent = document.getElementById("bounties")
-    if ((!filter || filter.length === 0) && categoryFilter === "None") {
-        Array.from(parent.children).forEach(child => {
+    if ((!filter || filter.length === 0) && categoryFilter === "None")
+    {
+        Array.from(parent.children).forEach(child =>
+        {
             child.hidden = false;
         })
         return;
@@ -225,42 +271,52 @@ function filterBounties(filter) {
     let checkCategory = document.getElementById("use_category").checked
     console.log(checkTitle, checkCategory, checkDescription, checkReward, categoryFilter)
     filter = filter.toLowerCase()
-    for (const [key, value] of Object.entries(bounties)) {
+    for (const [key, value] of Object.entries(bounties))
+    {
         var b = document.getElementById(key);
         if (!b) continue
         b.hidden = true;
-        if (categoryFilter !== "None" && value["category"].toLowerCase() !== categoryFilter) {
+        if (categoryFilter !== "None" && value["category"].toLowerCase() !== categoryFilter)
+        {
             continue;
         }
-        if (checkTitle && (value["title"].toLowerCase().includes(filter) || filter.includes(value["title"].toLowerCase()))) {
+        if (checkTitle && (value["title"].toLowerCase().includes(filter) || filter.includes(value["title"].toLowerCase())))
+        {
             b.hidden = false;
             console.log(value["title"] + " contains " + filter)
         }
-        if (checkDescription && (value["description"].toLowerCase().includes(filter) || filter.includes(value["description"].toLowerCase()))) {
+        if (checkDescription && (value["description"].toLowerCase().includes(filter) || filter.includes(value["description"].toLowerCase())))
+        {
             b.hidden = false;
         }
-        if (checkCategory && (value["category"].toLowerCase().includes(filter) || filter.includes(value["category"].toLowerCase()))) {
+        if (checkCategory && (value["category"].toLowerCase().includes(filter) || filter.includes(value["category"].toLowerCase())))
+        {
             b.hidden = false;
         }
-        if (checkReward && (value["reward"].toLowerCase().includes(filter) || filter.includes(value["reward"].toLowerCase()))) {
+        if (checkReward && (value["reward"].toLowerCase().includes(filter) || filter.includes(value["reward"].toLowerCase())))
+        {
             b.hidden = false;
         }
     }
 }
-function toggleBounty(id, jump = true) {
+function toggleBounty(id, jump = true)
+{
     let b = document.getElementById(id)
     if (!b) return
     var bounty = b.querySelector(".description")
     bounty.hidden = !bounty.hidden
-    if (!listView && !bounty.hidden) {
+    if (!listView && !bounty.hidden)
+    {
         document.getElementById(id).style.width = "fit-content"
         document.getElementById(id).style.height = "fit-content"
     }
-    else if (!listView && bounty.hidden) {
+    else if (!listView && bounty.hidden)
+    {
         document.getElementById(id).style.width = "25%"
         document.getElementById(id).style.height = "25vh"
     }
-    else {
+    else
+    {
         document.getElementById(id).style.removeProperty('width')
         document.getElementById(id).style.removeProperty('height')
     }
@@ -268,8 +324,10 @@ function toggleBounty(id, jump = true) {
         jumpTo(id)
 }
 
-function startSubmission(button) {
-    const shortId = button.parentNode.id
+function startSubmission(button, id = null, previousSubmissionId = null)
+{
+    const shortId = id ?? button.parentNode.id
+    console.log(shortId)
     currentBounty = shortId;
     const bounty = bounties[shortId];
     const modal = document.getElementById("submit_bounty");
@@ -279,14 +337,26 @@ function startSubmission(button) {
     title.innerHTML = bounty["title"]
     description.innerHTML = bounty["description"]
     let submission = modal.querySelector(".submission")
+    let but = modal.querySelector("button")
+    but.onclick = e => submitBounty(previousSubmissionId)
     submission.value = getSubProgress(currentBounty)
 }
 
-async function submitBounty() {
+function retrySubmission(id, bId)
+{
+    getBountyShortIdByLong(bId).then((b)=>{
+        
+        startSubmission(null, b, id);
+    })
+}
+
+async function submitBounty(prevSubmissionId = null)
+{
     let submission = document.getElementById("submission").value
     let data = new URLSearchParams()
     data.append("submission", submission)
     data.append("username", user)
+    if(prevSubmissionId) data.append("previousSubmission", prevSubmissionId)
     data.append("id", bounties[currentBounty].longId)
     let response = await fetch("submit-bounty.php", {
         method: "POST",
@@ -294,20 +364,23 @@ async function submitBounty() {
     })
     let text = await response.text();
     console.log(text)
-    if (text === "100") {
+    if (text === "100")
+    {
         //Success
         saveSubProgress(currentBounty, "")
         document.getElementById("submit_bounty").close()
     }
 }
 
-function viewSubmission(id) {
+function viewSubmission(id)
+{
     let submission = submissions[id]
     let dialog = document.getElementById("view_submission");
     let title = dialog.querySelector(".title")
     let bDescription = dialog.querySelector("#submitted_bounty_description")
     let sDescription = dialog.querySelector("#submission_description")
-    getBountyByLongId(submission["bountyId"]).then((bounty) => {
+    getBountyByLongId(submission["bountyId"]).then((bounty) =>
+    {
         title.innerText = bounty["title"]
         bDescription.innerHTML = bounty["description"]
         sDescription.innerHTML = submission["submission"]
@@ -319,15 +392,22 @@ function viewSubmission(id) {
         sDescription.classList.add(submission["status"].replace(" ", "-"))
 
         let feedbackContainer = dialog.querySelector("#feedback_container")
-        if (submission["feedback"] !== null) {
+        if (submission["feedback"] !== null)
+        {
             console.log(submission["feedback"])
             feedbackContainer.style.display = "flex"
             let feedback = feedbackContainer.querySelector(".description")
             feedback.innerHTML = submission["feedback"]
+            let retryButton = feedbackContainer.querySelector("#retry_button")
             if (submission["status"] == "complete")
-                feedbackContainer.querySelector("button").hidden = true
+                retryButton.hidden = true
+            else
+            {
+                retryButton.onclick = e => retrySubmission(id, submission["bountyId"])
+            }
         }
-        else {
+        else
+        {
             feedbackContainer.style.display = "none"
         }
         dialog.showModal()
@@ -335,38 +415,44 @@ function viewSubmission(id) {
 }
 
 let listView
-function updateView(changeView = true) {
+function updateView(changeView = true)
+{
     let container = document.getElementById("bounties")
     let listText = document.getElementById("list-view-text")
     let gridText = document.getElementById("grid-view-text")
 
-    if (changeView) {
+    if (changeView)
+    {
         listView = !listView
     }
 
     console.log(listView)
-    if (listView == false) {
+    if (listView == false)
+    {
         console.log("false")
         container.className = ""
         container.classList.add("card-list-grid")
         listText.style.fontWeight = "normal"
         gridText.style.fontWeight = "bold"
     }
-    else {
+    else
+    {
         container.className = ""
         container.classList.add("card-list")
         gridText.style.fontWeight = "normal"
         listText.style.fontWeight = "bold"
 
     }
-    for ([id, bounty] of Object.entries(bounties)) {
+    for ([id, bounty] of Object.entries(bounties))
+    {
         toggleBounty(id, false)
         toggleBounty(id, false)
     }
     localStorage.setItem("listView", listView)
 }
 
-function jumpTo(anchor_id) {
+function jumpTo(anchor_id)
+{
     var url = location.href;               //Saving URL without hash.
     location.href = "#" + anchor_id;                 //Navigate to the target element.
     history.replaceState(null, null, url);   //method modifies the current history entry.

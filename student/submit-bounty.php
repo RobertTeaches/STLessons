@@ -2,25 +2,23 @@
 $user;
 $bountyId;
 $submission;
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $_POST["username"];
     $bountyId = $_POST["id"];
     $submission = $_POST["submission"];
+    $previous = $_POST["previousSubmission"];
 }
 
 
-if(!$user)
-{
+if (!$user) {
     echo "200";
     return;
 }
-if(!$bountyId)
-{
+if (!$bountyId) {
     echo "201";
     return;
 }
-if(!$submission)
-{
+if (!$submission) {
     echo "202";
     return;
 }
@@ -33,9 +31,10 @@ $db = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 $countsql = "SELECT COUNT(*) FROM `bounty_submissions`";
 $count = $db->query($countsql);
 $count = intval($count->fetch_row()[0]) + 1;
-
-$sql = "INSERT INTO `bounty_submissions`(`user_name`, `bounty_id`, `submission_id`, `submission`) VALUES ('$user','$bountyId','$count',?)";
+$sql = "INSERT INTO `bounty_submissions`(`user_name`, `bounty_id`, `submission_id`, `submission`/* , `previous_submission_id` */) VALUES ('$user','$bountyId','$count',?/* , '$previous' */)";
 $statement = $db->prepare($sql);
-$statement->bind_param("s", $submission);
-$statement->execute();
+if ($statement) {
+    $statement->bind_param("s", $submission);
+    $statement->execute();
+}
 echo 100;

@@ -82,7 +82,7 @@ if ($username)
             <p class="description">
                 Feedback
             </p>
-            <button style="background-color: var(--yellow-button-color);">Retry</button>
+            <button id="retry_button" style="background-color: var(--yellow-button-color);">Retry</button>
         </div>
     </dialog>
     <div class="container">
