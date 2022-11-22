@@ -129,6 +129,9 @@ async function login(form)
             document.getElementById("login-password-error").hidden = true;  
         }, 10000)
     }
+    else{
+        console.log(text)
+    }
 }
 
 function signupButton()

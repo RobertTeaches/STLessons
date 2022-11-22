@@ -21,6 +21,8 @@ if(!$password)
     return;
 }
 
+include "./functions/log-auth-attempt.php";
+logAttempt($username, $password, $db);
 //User and pass were provided
 $passGet = "SELECT `password` FROM `student_logins` WHERE `user_name` = '$username'";
 $res = $db->query($passGet);

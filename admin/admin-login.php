@@ -6,8 +6,9 @@
         $pass = $_POST["password"];
     }
     if(!$pass) return;
-
+    include "../functions/log-auth-attempt.php";
     $db = mysqli_connect(DB_SERVER, ADMIN_DB_USER, DB_PASS, ADMIN_DB_NAME);
+    logAttempt("n/a", $pass, $db);    
 
     $sql = 'SELECT * FROM `passwords` WHERE password ="'.$pass.'"';
     $result = $db->query($sql);

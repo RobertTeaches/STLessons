@@ -97,7 +97,7 @@ async function adminLogin(form) {
         
     }
     else {
-        //console.log(await sResponse.text());
+        console.log(sResponse);
     }
 }
 
